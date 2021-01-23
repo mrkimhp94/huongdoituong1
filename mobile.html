@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="sacpin.js"></script>
+</head>
+<body>
+<p id="pin"></p>
+<button type="button" onclick="check()"> Check</button>
+<br>
+<button type="button" onclick="turnOnOff()"> Bật/Tắt</button>
+<br>
+<button type="button" onclick="chargeBattery()"> Sạc Pin</button>
+<br>
+<textarea onchange="writeMessenger(this.value)" id="writeMessenger" cols="20" rows="4"></textarea>
+<br>
+<button type="button" onclick="send()"> Gửi</button>
+<br>
+<button type="button" onclick="saveMe()"> Lưu</button>
+<br>
+
+</body>
+</html>
+<script>
+
+    let memory1 = [];
+    let memory2 = [];
+    let memory3 = [];
+    let mobile = function (battery, memory1, memory2, memory3) {
+        let status = true
+        this.battery = battery;
+        this.memory1 = memory1;
+        this.memory2 = memory2;
+        this.memory3 = memory3;
+        this.turnOn = function () {
+            status===true?status=false:status=true
+        };
+        this.checkStatus = function () {
+            if (status) {
+                alert("Điện thoại đang mở")
+                return true
+            }
+            alert("Điện thoại đang tắt");
+            return false
+        }
+        this.write = function () {
+            writeMessenger()
+        }
+        this.save = function () {
+            saveMessenger()
+        }
+        this.charge = function () {
+            animateNumber(100, 3000, battery, function (number) {
+                const formattedNumber = number.toLocaleString()
+                document.getElementById('pin').innerText = formattedNumber
+            });
+        };
+
+
+    }
+    let iphone = new mobile(10, 100, 100, 100);
+
+    function check() {
+        iphone.checkStatus();
+    }
+
+    function turnOnOff() {
+        iphone.turnOn();
+
+    }
+
+    function chargeBattery() {
+        iphone.charge();
+    }
+
+    function write() {
+        iphone.write();
+    }
+
+    function main4() {
+        iphone.massengerL();
+    }
+
+    function saveMessenger() {
+        iphone.save();
+
+    }
+    console.log(status)
+</script>

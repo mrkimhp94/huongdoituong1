@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="area"></p>
+<p id="perimeter"></p>
+<canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;"></canvas>
+</body>
+</html>
+<script>
+    let Rectangle = function (width, height) {
+        this.width = width
+        this.height = height;
+        this.getWidth = function (getWidth) {
+            return this.width
+        }
+        this.getHeight = function (getHeight) {
+            return this.height
+        }
+
+        this.area = function areaSquare() {
+            document.getElementById("area").innerHTML = "Diện tích là : " + width * height
+        }
+
+        this.perimeter = function perimeter() {
+            document.getElementById("perimeter").innerHTML = "Chu vi là : " + (width + height) * 2
+
+        }
+        this.creatSquare = function creatSquare() {
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            ctx.beginPath();
+            ctx.fillStyle = "#FF0000"
+            ctx.fillRect(0, 0, width, height)
+            ctx.fill();
+        }
+
+    }
+let a= new Rectangle(parseInt(prompt("nhập width")),parseInt(prompt("nhập height")));
+    let b = a.getWidth();
+    let c = a.getHeight();
+    a.creatSquare(b,c);
+    a.area(b,c);
+    a.perimeter(b,c)
+</script>
